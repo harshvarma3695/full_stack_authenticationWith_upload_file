@@ -1,35 +1,33 @@
 import express from "express";
 import mongoose from "mongoose";
-import path from 'path';
+import path from "path";
 import multer from "multer";
 import { User } from "./models/User.js";
-import { register,login } from "./controllers/user.js";
+import { register, login } from "./controllers/user.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-import { v2 as cloudinary } from 'cloudinary';
-    cloudinary.config({ 
-        cloud_name: 'l9jdti2e', 
-        api_key: '595947912457686', 
-        api_secret: 'UqjLnosLtj76CbGrNS2lDIb5ktE', // Click 'View API Keys' above to copy your API secret
-    });
+import { v2 as cloudinary } from "cloudinary";
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const app = express();
 
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(
-  process.env.MONGO_URI,
-  {
+mongoose
+  .connect(process.env.MONGO_URI, {
     dbName: "Register_database",
-  },
-).then(()=>{
-  console.log("mongodb connected....");
-  
-}).catch((err)=>{
-  console.log(err);
-  
-});
+  })
+  .then(() => {
+    console.log("mongodb connected....");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // multer configuration
 const storage = multer.diskStorage({
@@ -37,13 +35,12 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname),
     );
   },
 });
 
 const upload = multer({ storage: storage });
-
 
 app.get("/register", (req, res) => {
   res.render("register.ejs");
@@ -53,8 +50,8 @@ app.post("/register", upload.single("file"), register);
 app.post("/login", login);
 
 app.get("/users", async (req, res) => {
-  let users = await User.find().sort({createdAt:-1});
-  res.render("users.ejs",{users})
+  let users = await User.find().sort({ createdAt: -1 });
+  res.render("users.ejs", { users });
 });
 
 // Routes
