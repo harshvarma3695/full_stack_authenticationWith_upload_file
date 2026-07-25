@@ -104,5 +104,5 @@ Add screenshots of:
 
 GitHub: https://github.com/harshvarma3695
 
-LinkedIn: LinkedIn : https://linkedin.com/in/your-linkedin
+LinkedIn: LinkedIn : https://www.linkedin.com/in/harsh-varma-212229325/
 
