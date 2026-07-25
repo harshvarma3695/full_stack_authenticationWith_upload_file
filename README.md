@@ -89,12 +89,21 @@ node server.js
 
 ## 📸 Screenshots
 
-Add screenshots of:
+### Registration Page
 
-* Registration Page
-* Login Page
-* Dashboard
-* Profile Image Upload
+![Registration Page](images/Register.png)
+
+### Login Page
+
+![Login Page](images/Login.png)
+
+### User Profile
+
+![User Profile](images/profile.png)
+
+### All Users Profile
+
+![All Users Profile](images/All_usersProfile.png)
 
 ---
 
@@ -102,7 +111,6 @@ Add screenshots of:
 
 **Harsh Varma**
 
-GitHub: https://github.com/harshvarma3695
-
-LinkedIn: LinkedIn : https://www.linkedin.com/in/harsh-varma-212229325/
+- GitHub: https://github.com/harshvarma3695
+- LinkedIn: https://www.linkedin.com/in/harsh-varma-212229325/
 
